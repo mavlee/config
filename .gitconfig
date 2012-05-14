@@ -1,0 +1,19 @@
+[user]
+	name = Maverick
+	email = maverick.lee225@gmail.com
+[color]
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  up = pull --rebase
+  glog = log --graph --oneline --all --decorate
+[github]
+	user = mavlee
