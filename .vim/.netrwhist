@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/mavericklee/Documents/CYOA/db/migrate'
+let g:netrw_dirhist_2='/Users/mavericklee/Documents/mavlee.github.com'
+let g:netrw_dirhist_3='/Users/mavericklee/Documents/mavlee.github.com/_layouts'
+let g:netrw_dirhist_4='/Users/mavericklee/Documents/CYOA'
+let g:netrw_dirhist_5='/Users/mavericklee/Documents/mavlee.github.com/_posts'
+let g:netrw_dirhist_6='/Users/mavericklee/Documents/.git'
+let g:netrw_dirhist_7='/Users/mavericklee/Documents/around-the-block/templates'
+let g:netrw_dirhist_8='/Users/mavericklee/Documents/whataremychances'
+let g:netrw_dirhist_9='/Users/mavericklee/Documents/N36/sesameio/templates'
