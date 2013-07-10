@@ -1,5 +1,5 @@
 # BOLD [time][user][cur folder]$ REGULAR
-PS1='\e[1;97m[\t][\u][\W]$ \e[0;37m'
+PS1='\[\e[1;97m\][\t][\u][\W]$ \[\e[0;37m\]'
 
 # aliases
 alias ls='ls -GFh'
@@ -11,3 +11,5 @@ alias ssh-team-zerg-rush='ssh -v -i ~/.ssh/team-zerg-rush.pem ubuntu@ec2-184-72-
 
 # Load RVM Function
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+export EDITOR="vim"
