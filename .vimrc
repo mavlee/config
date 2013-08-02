@@ -12,7 +12,7 @@ set ignorecase
 set smartcase
 set hlsearch
 set gdefault
-set wildignore+=*.o,*.d,*.obj,*.pyc,*.git
+set wildignore+=*.o,*.d,*.obj,*.pyc,*.git,*.svn,*.class,build
 set backspace=indent,eol,start
 
 " set persistent undo history
@@ -20,6 +20,9 @@ set undofile
 set undodir=~/.vim/undo
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
+
+" set tags location
+set tags=./tags,tags;
 
 " Mouse funny business
 set mouse=a
@@ -40,8 +43,16 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <leader>w :%s/\s\+$//<cr>:let @/=''<CR>
 " Set leader n to open/close NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>
-" Set F5 to open/close Gundo
+" Set leader g to open/close Gundo
 nnoremap <leader>g :GundoToggle<CR>
+" Set leader e to open/close tagbar
+nnoremap <leader>e :TagbarToggle<CR>
+" Set leader f to search tag
+nnoremap <leader>f :ta<CR>
+" Set leader b to go back tag stack
+nnoremap <leader>b :po<CR>
+" Set leader j to go search under cursor
+nnoremap <leader>j <c-]>
 
 " Split navigation
 nnoremap <c-k> <c-w>k
@@ -59,6 +70,11 @@ set showcmd       " display incomplete commands
 set incsearch
 set ttyfast
 set cursorline
+
+" Search settings
+set grepprg=ack
+autocmd QuickFixCmdPost *grep* cwindow
+autocmd QuickFixCmdPost *vimgrep* cwindow
 
 " hemisu Theme
 set background=dark
@@ -120,3 +136,21 @@ let g:syntastic_python_flake8_args='--ignore=E501'
 let g:CommandTMaxHeight=20
 " remap the cancel button because of some weird issues
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
+
+" Tagbar settings
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+let g:tagbar_type_scala = {
+    \ 'ctagstype' : 'scala',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 'a:abstract classes',
+        \ 'o:objects',
+        \ 't:traits',
+        \ 'r:case classes',
+        \ 'm:methods',
+        \ 'V:values',
+        \ 'v:variables',
+        \ 'T:types',
+        \ 'p:packages'
+    \ ]
+    \ }
