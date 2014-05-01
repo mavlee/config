@@ -1,2 +1,7 @@
 --color
 --ignore-file=match:/^tags$/
+--ignore-file=ext:patch
+--type-set=spring=.spring
+--type-set=src=.src
+--type-set=json=.json
+--type-set=properties=.properties
