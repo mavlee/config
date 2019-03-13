@@ -47,6 +47,8 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>g :GundoToggle<CR>
 " Set leader e to open/close tagbar
 nnoremap <leader>e :TagbarToggle<CR>
+" Set leader t to open fzf
+nnoremap <leader>t :Files<CR>
 " Set leader f to search tag
 nnoremap <leader>f :ta<CR>
 " Set leader b to go back tag stack
@@ -71,6 +73,9 @@ set incsearch
 set ttyfast
 set cursorline
 
+" Use visual bell instead of audio
+set visualbell
+
 " Search settings
 set grepprg=ack
 autocmd QuickFixCmdPost *grep* cwindow
@@ -78,7 +83,7 @@ autocmd QuickFixCmdPost *vimgrep* cwindow
 
 " hemisu Theme
 set background=dark
-colorscheme hemisu
+colorscheme solarized
 
 " Set statusline colors
 hi User1 cterm=bold ctermfg=16  ctermbg=149
@@ -86,6 +91,7 @@ hi User2 cterm=bold ctermfg=16  ctermbg=167
 hi User3 cterm=bold ctermfg=16  ctermbg=116
 hi User4 cterm=bold ctermfg=16  ctermbg=134
 hi User5 cterm=bold ctermfg=231  ctermbg=238
+
 " Set the status line
 set statusline=
 set statusline+=%1*\ %<%f\                                "path
@@ -95,6 +101,7 @@ set statusline+=%4*\ %{fugitive#statusline()}\            "Git Status
 set statusline+=%5*\ %m\                                  "Modified flag
 set statusline+=%5*\ %=\ %l/%L\                           "Row number/total
 set statusline+=%5*\ %03c\                                "Column number
+
 set laststatus=2                                          "show the cursor position all the time
 
 " Disable arrow keys
@@ -107,8 +114,6 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-" Use visual bell instead of audio
-set visualbell
 
 " Highlight trailing whitepsace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -117,9 +122,6 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
-
-" pathogen
-call pathogen#infect()
 
 " only enable syntastic for python for now
 let g:syntastic_mode_map = { 'mode': 'passive',
@@ -137,8 +139,16 @@ let g:CommandTMaxHeight=20
 " remap the cancel button because of some weird issues
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
 
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+let g:fzf_layout = { 'down': 30 }
+
 " Tagbar settings
-let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+let g:tagbar_ctags_bin = '/usr/bin/ctags'
 let g:tagbar_type_scala = {
     \ 'ctagstype' : 'scala',
     \ 'kinds'     : [
@@ -154,3 +164,18 @@ let g:tagbar_type_scala = {
         \ 'p:packages'
     \ ]
     \ }
+
+set rtp+=~/.fzf
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'sjl/gundo.vim'
+Plugin 'junegunn/fzf.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'fatih/vim-go'
+Plugin 'vim-syntastic/syntastic'
+call vundle#end()
